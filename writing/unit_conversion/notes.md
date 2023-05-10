@@ -5,11 +5,11 @@
 We would like a program that takes a measurement in one unit (e.g., 4.5 quarts) and
 converts it to another unit (e.g., liters). For example, this conversion request
 
-> 450 km miles
+> `450 km miles`
 
 would result in this program output.
 
-> 450.0000 km = 279.6247 miles
+> `450.0000 km = 279.6247 miles`
 
 The program should produce an error message if a conversion between two units of different class (e.g., liquid volume to distance) is requested. The program should taken a database of conversion information form an input file before accepting conversion problems entered interactively  by the user. The user should be able to specify the units either by name (e.g., kilograms) or by abbreviation (e.g.,kg).
 
@@ -35,14 +35,14 @@ The attributes of a unit include its name and abbreviation, its class (mass, dis
 `NAME_LEN 30` /*storage allocated for a unit one*/ \
 `ABBREV_LEN 15` /*storage allocated for a unit abbreviation*/ \
 `CLASS LEN 20` /*storage allocated for a measurement class*/ \
-`MAX_UNITS 20` /*maximum number of different units handled*/ \
+`MAX_UNITS 20` /*maximum number of different units handled*/
 
 ### Problem Inputs
 
 `unit_t units[MAX_UNITS]` /*array representing unit conversion factors database*/ \
 `double quantity` /*value to convert*/ \
 `char old_units[NAME_LEN]` /*name or abbreviation of units to be converted*/ \
-`char new_units[NAME_LEN]` /*name or abbreviation of units to convert to*/ \
+`char new_units[NAME_LEN]` /*name or abbreviation of units to convert to*/
 
 ### Problem Output
 
@@ -83,4 +83,8 @@ In order to search an array, we need to know the array element value we are seek
 
 ## IMPLEMENTATION
 
-Code that implements our universal conversion program is shown in **FIGURE 10.12**
+In the universal conversion program it makes sense to use two sources of input. The database of units is taken from a file `(units.txt)` that can be created once and then used for many runs of the program. In contrast the program expects that the conversion problems will be entered interactively.
+
+## TESTING
+
+In addition to testing the conversion of units of liquid volume, distance, and mass using values whose conversions are easy to verify, we should also select test cases that exercise each of the error message facilities of the program. The database in this file assumes standard units of meters, liters, and kilograms. Note that all that is required by the program is that the database consistently use *some* standard units. It does not prescribe *what* units these must be.
